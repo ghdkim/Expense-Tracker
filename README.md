@@ -22,7 +22,8 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
-<h3 align="center">Xccelerate Unit 0 Python Project</h3>
+<h3 align="center">Xccelerate Bootcamp</h3>
+<h6 align="center">Unit 0 Python Project</h6>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
