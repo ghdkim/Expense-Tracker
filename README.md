@@ -28,13 +28,15 @@
 ## About The Project
 Welcome to the Expense Tracker Project! This Python application is designed to assist you in managing your monthly expenses efficiently. By providing a straightforward and interactive interface, it enables you to keep track of your spending in relation to your set monthly budget.
 
+
+
 ### Built With
 [![Python][Python-org]][Python-url]
 
 
 <!-- Key Features -->
 ## Key Features
-**Monthly Budget Tracking**: Input your monthly budget, and the application will monitor your expenses against this amount.
+**Monthly Budget Tracking**: Input your monthly budget, and the application will monitor your expenses against this amount. The application will also monitor the date (month & year) of the computer system as this will allow the application to automatically reset its data by creating a new file when the new month and year turns. 
 
 
 **Expense Categorization**: Log your expenses and categorize them into predefined categories like 'Restaurants', 'Transportation', and more. This categorization helps in understanding your spending habits better.
