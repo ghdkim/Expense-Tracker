@@ -72,14 +72,6 @@ python3 -m pip install -r requirements.txt
 python3 main.py
    ```
 
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions to the Expense Tracker project are welcome! Whether it's feature enhancements, bug fixes, or documentation improvements, feel free to fork this repository and submit a pull request.
-
-
-
 <!-- CONTACT -->
 ## Contact
 
