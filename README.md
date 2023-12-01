@@ -27,13 +27,10 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 Welcome to the Expense Tracker Project! This Python application is designed to assist you in managing your monthly expenses efficiently. By providing a straightforward and interactive interface, it enables you to keep track of your spending in relation to your set monthly budget.
-    
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
 [![Python][Python-org]][Python-url]
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- Key Features -->
 ## Key Features
@@ -48,7 +45,6 @@ Welcome to the Expense Tracker Project! This Python application is designed to a
 
 **Daily Budget Calculation**: Based on your spending, the tracker calculates and suggests how much you can spend each day to stay within your budget.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -61,7 +57,6 @@ Welcome to the Expense Tracker Project! This Python application is designed to a
 
 **Review and Adjust**: Regularly check the summary and adjust your spending as needed to stay on track.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- Installation -->
 ## Installation
@@ -76,14 +71,11 @@ python3 main.py
    ```
 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- CONTRIBUTING -->
 ## Contributing
 
 Contributions to the Expense Tracker project are welcome! Whether it's feature enhancements, bug fixes, or documentation improvements, feel free to fork this repository and submit a pull request.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- CONTACT -->
