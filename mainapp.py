@@ -143,12 +143,12 @@ def summarize_expenses(expenses_file_path, budget):
 # threshold to trigger advice. I set the threshold to 25% of total budget
 
     thresholds = {
-        "🍽️Restaurants": 0.20 * budget,
-        "🏡Housing": 0.60 * budget,
-        "🎁Shopping": 0.15 * budget,
-        "🍾Entertainment": 0.15 * budget,
-        "🚗Transport": 0.20 * budget,
-        "⭐️Miscellaneous": 0.10 * budget,
+        "🍽️Restaurants": 0.12 * budget,
+        "🏡Housing": 0.40 * budget,
+        "🎁Shopping": 0.12 * budget,
+        "🍾Entertainment": 0.12 * budget,
+        "🚗Transport": 0.18 * budget,
+        "⭐️Miscellaneous": 0.06 * budget,
     }
 
     advice_dict = {
@@ -164,7 +164,7 @@ def summarize_expenses(expenses_file_path, budget):
     for key, amount in amount_by_category.items():
         print(f"    {key}: ${amount: .2f}")
         if key in advice_dict and amount > thresholds.get(key,0):
-            print (f"   Advice: {advice_dict[key]} Don't exceed over ${thresholds[key]} for {key}.")
+            print (f"   Advice: {advice_dict[key]} Don't exceed over ${thresholds[key]} for {key}.\n")
 
 # checking total spent expenses
     total_spent = sum([ex.amount for ex in expenses])
