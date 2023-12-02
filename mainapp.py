@@ -6,13 +6,32 @@ import calendar
 
 def main():
     print(f"🤑Welcome to this Expense Tracker!")
-    expenses_file_path = "expenses.csv"
     budget_file_path = "budget.txt"
     month_file_path = "month.txt"
 
     current_month = datetime.datetime.now().month
     current_year = datetime.datetime.now().year
+    expenses_file_path = f"expenses_{current_year}_{current_month}.csv"
 
+    while True:
+        budget = get_budget(budget_file_path, month_file_path, current_year, current_month)
+
+        print(f"Monthly Budget: ${budget}")
+
+        with open(budget_file_path, "w") as f:
+            f.write(str(budget))
+        with open(month_file_path, "w") as f:
+            f.write(f"{current_year},{current_month}")
+
+        expenses = get_user_expenses()
+        save_expenses_to_file(expenses, expenses_file_path)
+        summarize_expenses(expenses_file_path, budget)
+
+        response = input("\nPlease type 'yes' to continue or 'no' to exit: ").lower()
+        if response != 'yes':
+            break
+
+def get_budget (budget_file_path, month_file_path, current_year, current_month):
 # producing a file path to save information on the user's monthly budget and also to help reset the expenses tracker on a new month
     if os.path.exists (budget_file_path) and os.path.exists(month_file_path):
         with open (month_file_path, "r") as f:
@@ -34,21 +53,7 @@ def main():
                         budget = float(f.read().strip())
     else:
         budget = float(input("What is your monthly budget? $"))
-
-    print(f"Monthly Budget: ${budget}")
-
-    with open(budget_file_path, "w") as f:
-        f.write(str(budget))
-    with open(month_file_path, "w") as f:
-        f.write(f"{current_year},{current_month}")
-
-    expenses = get_user_expenses()
-
-    save_expenses_to_file(expenses, expenses_file_path)
-
-    summarize_expenses(expenses_file_path, budget)
-
-    pass
+    return budget
 
 def get_user_expenses():
     print(f"💸Getting User Expenses")
@@ -61,9 +66,9 @@ def get_user_expenses():
         expense_categories = [
             "🍽️Restaurants",
             "🛒Groceries",
-            "🏡Home",
-            "🎁Gifts",
-            "💼Work",
+            "🏡Housing",
+            "🎁Shopping",
+            "🏥Healthcare",
             "🍾Entertainment",
             "🚗Transport",
             "⭐️Miscellaneous"
@@ -134,9 +139,32 @@ def summarize_expenses(expenses_file_path, budget):
         else:
             amount_by_category[key] = expense.amount
 
+
+# threshold to trigger advice. I set the threshold to 25% of total budget
+
+    thresholds = {
+        "🍽️Restaurants": 0.20 * budget,
+        "🏡Housing": 0.60 * budget,
+        "🎁Shopping": 0.15 * budget,
+        "🍾Entertainment": 0.15 * budget,
+        "🚗Transport": 0.20 * budget,
+        "⭐️Miscellaneous": 0.10 * budget,
+    }
+
+    advice_dict = {
+        "🍽️Restaurants": "You are spending too much eating out. Consider buying groceries to reduce your cost.",
+        "🏡Housing": "Your housing expenses are high. Consider saving on utilities or maintenance costs.",
+        "🎁Shopping": "You are spending too much on shopping. Consider saving your money for other expenses." ,
+        "🍾Entertainment": "You are spending too much on entertainment related costs. Consider saving your money for other expenses.",
+        "🚗Transport": "You are spending too much on Transportation. Consider using less expensive modes of transport like public transport, walking or cycling.",
+        "⭐️Miscellaneous": "You are spending too much on these expenses. Consider saving your money for other expenses.",
+    }
+
     print("\nExpenses By Category: ")
     for key, amount in amount_by_category.items():
         print(f"    {key}: ${amount: .2f}")
+        if key in advice_dict and amount > thresholds.get(key,0):
+            print (f"   Advice: {advice_dict[key]} Don't exceed over ${thresholds[key]} for {key}.")
 
 # checking total spent expenses
     total_spent = sum([ex.amount for ex in expenses])
