@@ -94,6 +94,7 @@ def get_user_expenses():
 
     return expenses
 def save_expenses_to_file(expenses, expenses_file_path):
+# saving the expenses data to an expenses file
     print(f"🗂️Saving User Expenses: {expenses} to {expenses_file_path}")
 
     try:
@@ -109,6 +110,7 @@ def save_expenses_to_file(expenses, expenses_file_path):
     except IOError as e:
         print("An error occurred writing to the file: ", e)
 def summarize_expenses(expenses_file_path, budget):
+# presenting the summary of the expenses by name, category and amount
     print(f"💰Summarizing User Expenses")
 
     expenses = []
@@ -123,6 +125,7 @@ def summarize_expenses(expenses_file_path, budget):
     except IOError as e:
         print("An error occurred reading the file: ", e)
 
+# checking the sum of the expenses by category
     amount_by_category = {}
     for expense in expenses:
         key = expense.category
@@ -135,12 +138,14 @@ def summarize_expenses(expenses_file_path, budget):
     for key, amount in amount_by_category.items():
         print(f"    {key}: ${amount: .2f}")
 
+# checking total spent expenses
     total_spent = sum([ex.amount for ex in expenses])
     if total_spent >= budget:
         print(red(f"\nTotal Spent This Month: ${total_spent:.2f}"))
     else:
         print (green(f"\nTotal Spent This Month: ${total_spent:.2f}"))
 
+# checking the remaining budget for the month and budget per day
     remaining_budget = budget - total_spent
     if remaining_budget >= 0:
         print(green(f"\nRemaining Budget This Month: ${remaining_budget:.2f}"))
@@ -157,6 +162,7 @@ def summarize_expenses(expenses_file_path, budget):
     else:
         print(red(f"\nBudget Per Day: ${daily_budget:.2f}"))
 
+# changing colour of the text depending on whether the remaining budget is negative or positive or whether the expenses has passed the monthly budget
 def green(text):
     return f"\033[92m{text}\033[0m"
 def red(text):
