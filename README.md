@@ -78,7 +78,7 @@ python3 main.py
 
 Gihyun Derek Kim -  ghdkimuni@gmail.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: https://github.com/ghdkim/xccelerate_p1
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
